@@ -252,3 +252,26 @@ body.menu-open { overflow: hidden; }
 /* The Eventide divider, centred between sections as designed. */
 .section-break { background: var(--ink); display: flex; justify-content: center; padding: 8px var(--gutter); }
 .section-break img { width: min(465px, 70vw); height: auto; }
+
+/* Team page. Its own flexible layout rather than fixed grid areas, so the
+   photos keep one shape and the captions flow under them at every width. */
+.team { display: grid; gap: 48px; padding-block: clamp(40px, 6vw, 120px); }
+.team-intro h1 { margin-bottom: .5em; }
+.team-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 40px; }
+.member img { width: 100%; height: auto; aspect-ratio: 6 / 7; object-fit: cover; }
+.member h2 { font-size: var(--h4); margin-top: .6em; }
+.member p { margin: 0; }
+@media (min-width: 768px) {
+  .team { grid-template-columns: 5fr 6fr; gap: 4vw; align-items: center; }
+  /* Zig-zag: Kaelin top left, Francis lower right, Kris bottom left. */
+  .team-list { grid-template-columns: 1fr 1fr; gap: 0 2.5vw; }
+  .member:nth-child(1) { grid-area: 1 / 1 / 2 / 2; }
+  .member:nth-child(2) { grid-area: 1 / 2 / 3 / 3; align-self: center; }
+  .member:nth-child(3) { grid-area: 2 / 1 / 3 / 2; margin-top: 2.5vw; }
+}
+
+/* HQ painting: on desktop the band keeps the painting's wide shape so the
+   whole room shows, and the crop leans toward the hand by the cabinet. */
+@media (min-width: 768px) {
+  #hq { min-height: 0 !important; aspect-ratio: 2500 / 848; }
+}
