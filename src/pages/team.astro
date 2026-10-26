@@ -33,17 +33,17 @@ const people = [
     <Block m="1/2/2/10" d="1/2/2/26" z={1}>
       <div class="team">
         <div class="team-intro dark-accent">
-          <h1 class="accent">Meet the Team</h1>
+          <h1 class="coral">Meet the Team</h1>
           <p>The three of us have spent a long time making games together. Through all of it - the shipped titles, the hard lessons, the decisions that worked and the ones that very much didn't - we kept gravitating toward the same qualities in each other. The same instincts. The same stubbornness about what matters. The same belief that the people you make something with are just as important as the thing itself.</p>
           <p>At some point, that stops feeling like coincidence and starts feeling like a reason.</p>
-          <p>So we took everything we'd built and learned together, and we <strong class="accent">Reset</strong>.</p>
+          <p>So we took everything we'd built and learned together, and we <strong class="coral">Reset</strong>.</p>
         </div>
         <ul class="team-list">
           {people.map((person) => (
             <li class="member">
               <Image src={person.photo} alt={`Halftone portrait of ${person.name}`} {...portrait} />
               <h2 class="accent">{person.name}</h2>
-              <p class="dark-accent">{person.role}</p>
+              <p class="role">{person.role}</p>
             </li>
           ))}
         </ul>

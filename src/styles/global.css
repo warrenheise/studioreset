@@ -261,6 +261,9 @@ body.menu-open { overflow: hidden; }
 .member img { width: 100%; height: auto; aspect-ratio: 6 / 7; object-fit: cover; }
 .member h2 { font-size: var(--h4); margin-top: .6em; }
 .member p { margin: 0; }
+/* Brand watermelon, by request. It is light on cream, so the weight is bumped to help it read. */
+.member .role, .team .coral { color: var(--coral); }
+.member .role, .team h1.coral { font-weight: 500; }
 @media (min-width: 768px) {
   .team { grid-template-columns: 5fr 6fr; gap: 4vw; align-items: center; }
   /* Zig-zag: Kaelin top left, Francis lower right, Kris bottom left. */
