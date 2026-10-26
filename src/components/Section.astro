@@ -1,5 +1,5 @@
 ---
-import { Image } from "astro:assets";
+import { Image, getImage } from "astro:assets";
 import type { ImageMetadata } from "astro";
 
 type Props = {
@@ -7,6 +7,8 @@ type Props = {
   rowsM: number;
   rowsD: number;
   bg?: ImageMetadata;
+  // Optional separate crop for phones, for backgrounds too wide to crop well.
+  bgMobile?: ImageMetadata;
   bgPosition?: string;
   overlay?: number;
   minHeight?: string;
@@ -20,8 +22,14 @@ type Props = {
   parallax?: number;
 };
 
-const { theme = "black", rowsM, rowsD, bg, bgPosition = "50% 50%", overlay = 0, minHeight, id, label, eager = false, bgFormat = "webp", parallax = 0 } = Astro.props;
+const { theme = "black", rowsM, rowsD, bg, bgMobile, bgPosition = "50% 50%", overlay = 0, minHeight, id, label, eager = false, bgFormat = "webp", parallax = 0 } = Astro.props;
 const hasVideo = Astro.slots.has("background");
+const mobileSrcset = bgMobile
+  ? (await Promise.all([480, 960].filter((w) => w <= bgMobile.width).map(async (w) => {
+      const img = await getImage({ src: bgMobile, width: w, format: bgFormat, quality: 70 });
+      return `${img.src} ${w}w`;
+    }))).join(", ")
+  : "";
 ---
 <section
   class="section"
@@ -37,6 +45,8 @@ const hasVideo = Astro.slots.has("background");
       data-parallax={parallax ? parallax / 100 : undefined}
     >
       {hasVideo ? <slot name="background" /> : bg && (
+        <picture>
+        {bgMobile && <source media="(max-width: 767px)" srcset={mobileSrcset} sizes="100vw" />}
         <Image
           src={bg}
           alt=""
@@ -48,6 +58,7 @@ const hasVideo = Astro.slots.has("background");
           fetchpriority={eager ? "high" : undefined}
           style={`object-position:${bgPosition}`}
         />
+        </picture>
       )}
     </div>
   )}

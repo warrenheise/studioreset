@@ -153,10 +153,13 @@ const graph = {
         ticking = false;
         const vh = innerHeight;
         for (const el of layers) {
-          const factor = reduceMotion.matches ? 0 : Number(el.dataset.parallax);
+          // Off on phones, as on Squarespace: the extra height would zoom the
+          // background too far into a narrow screen.
+          const factor = reduceMotion.matches || innerWidth < 768 ? 0 : Number(el.dataset.parallax);
           const rect = el.parentElement!.getBoundingClientRect();
           const reach = (factor * (vh + rect.height)) / 2;
           el.style.inset = `${-reach}px 0`;
+          if (!factor) { el.style.transform = ""; continue; }
           if (rect.bottom < 0 || rect.top > vh) continue;
           const fromCenter = rect.top + rect.height / 2 - vh / 2;
           el.style.transform = `translate3d(0, ${-fromCenter * factor}px, 0)`;

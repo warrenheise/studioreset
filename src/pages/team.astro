@@ -6,6 +6,7 @@ import Block from "../components/Block.astro";
 import { site } from "../data/site";
 import pattern from "../assets/images/pattern_red.png";
 import hq from "../assets/images/HQ.png";
+import hqMobile from "../assets/images/HQ_mobile.jpg";
 import kaelin from "../assets/images/halftone_Kaelin.jpg";
 import francis from "../assets/images/halftone_Francis.jpg";
 import kris from "../assets/images/halftone_Kris.jpg";
@@ -57,6 +58,6 @@ const people = [
     <Block m="61/2/63/10" d="21/20/23/26" z={10} class="dark-accent"><p>{people[2].role}</p></Block>
   </Section>
 
-  <Section rowsM={2} rowsD={9} bg={hq} overlay={0.15} minHeight="66vh" parallax={30}>
+  <Section rowsM={2} rowsD={9} bg={hq} bgMobile={hqMobile} overlay={0.15} minHeight="66vh" parallax={30}>
   </Section>
 </Base>

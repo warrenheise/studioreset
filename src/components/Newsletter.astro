@@ -1,14 +1,17 @@
 ---
 // Where signups go is not decided yet. Set PUBLIC_NEWSLETTER_ACTION to the
 // provider's form endpoint and the form posts there; until then it explains.
+import { Image } from "astro:assets";
+import rMark from "../assets/images/r_mark_cream.png";
 const action = import.meta.env.PUBLIC_NEWSLETTER_ACTION ?? "";
 ---
 <div class="newsletter">
+  <Image src={rMark} alt="" widths={[160, 320]} sizes="160px" format="webp" class="r-mark" />
   <h2>Subscribe</h2>
-  <p>Sign up to receive news and updates.</p>
+  <p class="lede">Sign up to receive news and updates.</p>
   <form method="post" action={action || undefined} data-newsletter data-ready={action ? "true" : "false"}>
     <label class="visually-hidden" for="newsletter-email">Email address</label>
-    <input id="newsletter-email" name="email" type="email" autocomplete="email" placeholder="Email Address" required />
+    <input id="newsletter-email" name="email" type="email" autocomplete="email" placeholder="Email address" required />
     <button class="button" type="submit">Sign Up</button>
   </form>
   <p class="status" role="status" aria-live="polite"></p>
