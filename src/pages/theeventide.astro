@@ -4,6 +4,7 @@ import Base from "../layouts/Base.astro";
 import Section from "../components/Section.astro";
 import Block from "../components/Block.astro";
 import YouTube from "../components/YouTube.astro";
+import WishlistButton from "../components/WishlistButton.astro";
 import { site } from "../data/site";
 import poster from "../assets/images/eventide_video_poster.jpg";
 import gameLogo from "../assets/images/library_logo_transparent.png";
@@ -54,7 +55,7 @@ const description =
       <h1 class="fill"><span class="visually-hidden">The Eventide</span><Image src={gameLogo} alt="" widths={[640, 1280]} sizes="(min-width: 768px) 70vw, 88vw" format="webp" loading="eager" class="contain" /></h1>
     </Block>
     <Block m="8/2/10/10" d="11/2/13/26" z={8} jm="center" jd="center" class="wishlist">
-      <a class="button" href={site.steamUrl} target="_blank" rel="noopener">Wishlist on Steam</a>
+      <WishlistButton />
     </Block>
   </Section>
 
@@ -112,15 +113,15 @@ const description =
   <div class="section-break"><Image src={flourish} {...flourishProps} /></div>
 
   <Section theme="black-bold" rowsM={20} rowsD={15} overlay={0.15}>
-    <Block m="4/2/6/10" d="2/16/4/26" z={2}><h2 class="accent" style="font-size:var(--h3)">Development Journey</h2></Block>
-    <Block m="6/2/9/10" d="4/16/8/26">
+    <Block m="4/2/6/10" d="2/17/4/26" z={2}><h2 class="accent" style="font-size:var(--h3)">Development Journey</h2></Block>
+    <Block m="6/2/9/10" d="4/17/8/26">
       <p class="small">The Eventide is Studio Reset’s first title - if you want to follow along you can check out our socials for updates. We are <em>very </em>good at updating them and not scared of social media at all.</p>
     </Block>
     <Block m="10/1/17/11" d="2/2/15/16" z={1}>
       <YouTube id="9_BV5YG1Ozk" title="The Eventide - Reveal Trailer" />
     </Block>
-    <Block m="18/2/20/10" d="10/16/12/26" z={6} class="cta">
-      <a class="button" href={site.steamUrl} target="_blank" rel="noopener">Wishlist on Steam</a>
+    <Block m="18/2/20/10" d="10/17/12/26" z={6} class="cta">
+      <WishlistButton />
     </Block>
   </Section>
 </Base>
