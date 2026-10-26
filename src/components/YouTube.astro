@@ -14,7 +14,7 @@ const { id, title } = Astro.props;
   document.querySelectorAll<HTMLElement>("[data-yt]").forEach((el) => {
     el.querySelector("button")!.addEventListener("click", () => {
       const iframe = document.createElement("iframe");
-      iframe.src = `https://www.youtube-nocookie.com/embed/${el.dataset.yt}?autoplay=1&rel=0`;
+      iframe.src = `https://www.youtube-nocookie.com/embed/${el.dataset.yt}?autoplay=1&rel=0&cc_load_policy=0`;
       iframe.title = el.dataset.title!;
       iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
       iframe.referrerPolicy = "strict-origin-when-cross-origin";
