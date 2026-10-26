@@ -143,6 +143,33 @@ const graph = {
       menu.addEventListener("click", (e) => { if ((e.target as Element).closest("a")) setOpen(false); });
       document.addEventListener("keydown", (e) => { if (e.key === "Escape") setOpen(false); });
 
+      // Background parallax. Each background is grown by its factor of the
+      // scroll distance it can travel, then shifted against the scroll, so it
+      // moves that much slower than the page without showing an edge.
+      const layers = [...document.querySelectorAll<HTMLElement>(".section-bg[data-parallax]")];
+      const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)");
+      let ticking = false;
+      const update = () => {
+        ticking = false;
+        const vh = innerHeight;
+        for (const el of layers) {
+          const factor = reduceMotion.matches ? 0 : Number(el.dataset.parallax);
+          const rect = el.parentElement!.getBoundingClientRect();
+          const reach = (factor * (vh + rect.height)) / 2;
+          el.style.inset = `${-reach}px 0`;
+          if (rect.bottom < 0 || rect.top > vh) continue;
+          const fromCenter = rect.top + rect.height / 2 - vh / 2;
+          el.style.transform = `translate3d(0, ${-fromCenter * factor}px, 0)`;
+        }
+      };
+      const request = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
+      if (layers.length) {
+        addEventListener("scroll", request, { passive: true });
+        addEventListener("resize", request);
+        reduceMotion.addEventListener("change", request);
+        update();
+      }
+
       // Fade blocks in as they scroll into view, like the original site.
       const io = new IntersectionObserver((entries) => {
         for (const entry of entries) if (entry.isIntersecting) { entry.target.classList.add("in"); io.unobserve(entry.target); }

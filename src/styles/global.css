@@ -234,24 +234,6 @@ body.menu-open { overflow: hidden; }
 
 .wishlist { align-items: center; }
 
-/* Background parallax, as on the Squarespace sections that had it. Uses
-   scroll-driven animation, so there is no scroll script; browsers without
-   support (and people who prefer reduced motion) get a still background. */
-@supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
-    .section:has(> .section-bg.parallax) { view-timeline-name: --section; }
-    .section-bg.parallax {
-      inset: calc(var(--px-grow) * -1) 0;
-      animation: bg-parallax linear both;
-      animation-range: cover;
-    }
-    /* Kept in its own rule: the CSS minifier would otherwise fold it into the
-       animation shorthand, which browsers then reject. */
-    .section > .section-bg.parallax { animation-timeline: --section; }
-    .section-bg.parallax::after { inset: 0; }
-  }
-}
-@keyframes bg-parallax {
-  from { transform: translateY(calc(var(--px-shift) * -1)); }
-  to { transform: translateY(var(--px-shift)); }
-}
+/* Background parallax: the background is made taller than its section and
+   a small script in Base.astro moves it as the page scrolls. */
+.section-bg.parallax { will-change: transform; }
