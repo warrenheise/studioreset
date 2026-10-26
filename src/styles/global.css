@@ -147,7 +147,7 @@ strong { font-weight: 700; }
 
 /* Header */
 .site-header {
-  background: var(--mint); color: var(--ink);
+  background: var(--mint); color: var(--teal);
   padding: 7vw 6vw;
   display: flex; align-items: center; justify-content: space-between;
   position: relative; z-index: 20;
@@ -164,7 +164,7 @@ strong { font-weight: 700; }
 .menu-toggle svg { width: 32px; height: 32px; transition: transform .3s ease; }
 .menu-toggle[aria-expanded="true"] svg { transform: rotate(45deg); }
 .mobile-menu {
-  position: fixed; inset: 0; z-index: 15; background: var(--mint); color: var(--ink);
+  position: fixed; inset: 0; z-index: 15; background: var(--mint); color: var(--teal);
   display: flex; flex-direction: column; justify-content: center; align-items: center;
   visibility: hidden; opacity: 0; transition: opacity .3s ease, visibility .3s;
 }
@@ -181,10 +181,11 @@ body.menu-open { overflow: hidden; }
 
 /* Footer */
 .site-footer { --bg: var(--teal); }
+.site-footer a[href^="mailto:"] { color: var(--mint); }
 .social { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
 .social a {
   width: 34px; height: 34px; border-radius: 15%;
-  background: var(--cream); color: var(--ink);
+  background: var(--cream); color: var(--teal);
   display: grid; place-items: center;
 }
 .social svg { width: 20px; height: 20px; fill: currentColor; }
@@ -209,7 +210,7 @@ body.menu-open { overflow: hidden; }
 .h2 { font-size: var(--h2); line-height: 1.31; }
 .land-ack { margin-bottom: .8em; }
 
-/* Newsletter card: brand watermelon with ink text (5.2:1 contrast) */
+/* Newsletter card: brand watermelon with ink text (5.2:1; ocean is only 3:1) */
 .newsletter {
   position: relative; overflow: hidden;
   background: var(--coral); color: var(--ink);
@@ -282,7 +283,7 @@ body.menu-open { overflow: hidden; }
 .hero-intro p { margin-top: .9em; }
 
 /* Wishlist: Steam mark beside the label, a touch of lift on hover. */
-.button-steam { display: inline-flex; align-items: center; gap: .6em; transition: transform .15s ease, box-shadow .15s ease; }
+.button-steam { display: inline-flex; align-items: center; gap: .6em; background: var(--mint); color: var(--ink); transition: transform .15s ease, box-shadow .15s ease; }
 .button-steam svg { width: 1.3em; height: 1.3em; fill: currentColor; flex: none; }
 .button-steam:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgb(0 0 0 / .25); }
 @media (prefers-reduced-motion: reduce) { .button-steam:hover { transform: none; } }
