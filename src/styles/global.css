@@ -181,6 +181,7 @@ body.menu-open { overflow: hidden; }
 
 /* Footer */
 .site-footer { --bg: var(--teal); }
+.site-footer a[href^="mailto:"] { color: var(--mint); }
 .social { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
 .social a {
   width: 34px; height: 34px; border-radius: 15%;
