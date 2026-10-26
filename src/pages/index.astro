@@ -1,0 +1,42 @@
+---
+import Base from "../layouts/Base.astro";
+import Section from "../components/Section.astro";
+import Block from "../components/Block.astro";
+import Newsletter from "../components/Newsletter.astro";
+import heroBg from "../assets/images/logo_background_test7.png";
+import street from "../assets/images/StreetScene.png";
+---
+<Base
+  title="Studio Reset | Canadian indie game studio"
+  description="Studio Reset is a small independent game studio in Edmonton, Canada, making story-rich mystery games for the curious. Our first game, The Eventide, is in development."
+>
+  <Section theme="dark-bold" rowsM={32} rowsD={22} bg={heroBg} bgPosition="44.9% 35.2%" overlay={0.63} eager>
+    <Block m="3/2/9/10" d="6/2/11/10" z={1} jd="center">
+      <h1 class="h2"><em>The best stories answer a <span class="light-accent">question</span> we didn’t know we had.</em></h1>
+    </Block>
+    <Block m="9/2/12/10" d="11/2/14/10" z={2} jd="center">
+      <p class="large">We're a small Canadian studio making games for the curious.</p>
+    </Block>
+    <Block m="12/2/20/10" d="15/2/22/10" z={3}>
+      <Newsletter />
+    </Block>
+  </Section>
+
+  <Section id="about" rowsM={30} rowsD={31} bg={street} bgPosition="35.7% 88.8%" minHeight="1vh">
+    <Block m="3/2/5/10" d="7/9/9/23" z={2}>
+      <h2 class="accent">About Us</h2>
+    </Block>
+    <Block m="6/2/17/10" d="9/9/18/23">
+      <p class="large">
+        Studio Reset is a Canadian independent game studio creating story-rich games built around mystery, perspective, and player discovery. Founded by veteran developers with credits across <em>Mass Effect</em>, <em>Dragon Age</em>, <em>The Long Dark</em>, <em>Anthem</em>, and more, the studio brings decades of narrative, design, and worldbuilding experience to smaller, more focused original games. Studio Reset is currently developing <a href={`${import.meta.env.BASE_URL}theeventide/`}>their first game</a>, a neon-noir supernatural mystery game set in a stylized Canadian cityscape.
+      </p>
+    </Block>
+  </Section>
+
+  <Section rowsM={11} rowsD={5} overlay={0.15}>
+    <Block m="2/2/12/10" d="2/2/5/26" z={3} jd="center">
+      <h2 class="small center accent" style="font-size:var(--p)">Land Acknowledgment</h2>
+      <p class="small">We acknowledge that we are located on traditional land in Treaty 6 Territory. We would like to thank the diverse Indigenous Peoples whose ancestors' footsteps have marked these lands since time immemorial, including the Cree, Blackfoot, Nakota Sioux, Dene, and Saulteaux. We also acknowledge this as the Métis Homeland and home of Métis Nation of Alberta Region 4.</p>
+    </Block>
+  </Section>
+</Base>
