@@ -187,6 +187,19 @@ const graph = {
         for (const entry of entries) if (entry.isIntersecting) { entry.target.classList.add("in"); io.unobserve(entry.target); }
       }, { rootMargin: "0px 0px -5% 0px" });
       document.querySelectorAll(".fade").forEach((el) => io.observe(el));
+      // A fast jump (fling, anchor link, End key) can skip past an item without
+      // it ever intersecting, so also reveal anything already scrolled above.
+      let fadeTick = false;
+      addEventListener("scroll", () => {
+        if (fadeTick) return;
+        fadeTick = true;
+        requestAnimationFrame(() => {
+          fadeTick = false;
+          for (const el of document.querySelectorAll(".fade:not(.in)")) {
+            if (el.getBoundingClientRect().top < innerHeight) { el.classList.add("in"); io.unobserve(el); }
+          }
+        });
+      }, { passive: true });
     </script>
   </body>
 </html>
