@@ -7,7 +7,7 @@ import YouTube from "../components/YouTube.astro";
 import { site } from "../data/site";
 import poster from "../assets/images/eventide_video_poster.jpg";
 import gameLogo from "../assets/images/library_logo_transparent.png";
-import flourish from "../assets/images/eventide_flourish_left.png";
+import flourish from "../assets/images/eventide_flourish.png";
 import image1 from "../assets/images/Eventide_website_image1.png";
 import image2 from "../assets/images/Eventide_website_image2.png";
 import image3 from "../assets/images/Eventide_website_image3.png";
@@ -20,8 +20,7 @@ const base = import.meta.env.BASE_URL;
 const posterImg = await getImage({ src: poster, width: 1280, format: "webp", quality: 70 });
 const art = { widths: [540, 1080], sizes: "(min-width: 768px) 50vw, 100vw", format: "webp" as const, class: "contain" };
 const profile = { widths: [320, 640], sizes: "(min-width: 768px) 30vw, 60vw", format: "webp" as const, class: "cover" };
-// Left-aligned cut of the divider (the mark plus the line trailing right), to sit under left-aligned text.
-const flourishProps = { alt: "", widths: [267], format: "webp" as const, class: "contain left" };
+const flourishProps = { alt: "", widths: [465], format: "webp" as const };
 const description =
   "The Eventide is a neon-noir supernatural mystery game from Studio Reset. Lead a paranormal investigation agency, assign agents to strange cases and piece together the truth. Wishlist it on Steam.";
 ---
@@ -64,11 +63,12 @@ const description =
     <Block m="4/2/8/10" d="7/2/12/11" z={2}>
       <p class="small">Every case in The Eventide begins with a question: who should investigate? The choice matters. A backlog of unexplained incidents waits for your attention. Each day, you select one case and assign two agents to investigate it. Every agent sees the world differently - and that difference determines what the case reveals.</p>
     </Block>
-    <Block m="8/2/10/10" d="12/2/14/11" z={4}><Image src={flourish} {...flourishProps} /></Block>
     <Block m="10/1/20/11" d="2/13/18/26" jm="center" jd="center">
       <Image src={image1} alt="A case file stamped Under Investigation, with a photo of two agents clipped to the front" {...art} />
     </Block>
   </Section>
+
+  <div class="section-break"><Image src={flourish} {...flourishProps} /></div>
 
   <Section rowsM={19} rowsD={14} overlay={0.15}>
     <Block m="2/2/4/10" d="3/16/5/26" z={6}><h2 class="accent">Explore &amp; Investigate</h2></Block>
@@ -78,8 +78,9 @@ const description =
     <Block m="10/1/20/11" d="1/2/15/15" z={1} jm="center" jd="center">
       <Image src={image2} alt="Three instant photos of investigation scenes: a lone figure in a beam of light, a dim room with glowing markers, and a silhouette in a doorway" {...art} />
     </Block>
-    <Block m="9/2/11/10" d="10/16/12/26" z={5}><Image src={flourish} {...flourishProps} /></Block>
   </Section>
+
+  <div class="section-break"><Image src={flourish} {...flourishProps} /></div>
 
   <Section theme="black" rowsM={21} rowsD={14} overlay={0.15}>
     <Block m="2/2/4/10" d="3/2/5/12" z={6}><h2 class="accent">Deduce &amp; Resolve</h2></Block>
@@ -89,8 +90,9 @@ const description =
     <Block m="12/1/22/11" d="1/13/15/26" z={1} jm="center" jd="center">
       <Image src={image3} alt="A cork evidence board covered in photos and notes connected by red string" {...art} />
     </Block>
-    <Block m="11/2/13/10" d="10/2/12/11" z={5}><Image src={flourish} {...flourishProps} /></Block>
   </Section>
+
+  <div class="section-break"><Image src={flourish} {...flourishProps} /></div>
 
   <Section rowsM={40} rowsD={31} overlay={0.15} minHeight="1vh">
     <Block m="19/1/41/8" d="5/10/32/18" z={3} jm="center" jd="center">
@@ -107,8 +109,9 @@ const description =
     </Block>
   </Section>
 
+  <div class="section-break"><Image src={flourish} {...flourishProps} /></div>
+
   <Section theme="black-bold" rowsM={20} rowsD={15} overlay={0.15}>
-    <Block m="2/2/4/10" d="8/16/10/26" z={6}><Image src={flourish} {...flourishProps} /></Block>
     <Block m="4/2/6/10" d="2/16/4/26" z={2}><h2 class="accent" style="font-size:var(--h3)">Development Journey</h2></Block>
     <Block m="6/2/9/10" d="4/16/8/26">
       <p class="small">The Eventide is Studio Reset’s first title - if you want to follow along you can check out our socials for updates. We are <em>very </em>good at updating them and not scared of social media at all.</p>

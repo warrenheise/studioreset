@@ -144,8 +144,6 @@ strong { font-weight: 700; }
 .block > picture, .block > img, .block > .fill { width: 100%; height: 100%; }
 .block img.cover { width: 100%; height: 100%; object-fit: cover; }
 .block img.contain { width: 100%; height: 100%; object-fit: contain; }
-/* Same scale as the full divider was: the mark stays small and the line trails off. */
-.block img.left { width: auto; max-width: 100%; height: clamp(32px, 2.8vw, 52px); margin: auto 0; align-self: flex-start; }
 
 /* Header */
 .site-header {
@@ -250,3 +248,7 @@ body.menu-open { overflow: hidden; }
 /* Background parallax: the background is made taller than its section and
    a small script in Base.astro moves it as the page scrolls. */
 .section-bg.parallax { will-change: transform; }
+
+/* The Eventide divider, centred between sections as designed. */
+.section-break { background: var(--ink); display: flex; justify-content: center; padding: 8px var(--gutter); }
+.section-break img { width: min(465px, 70vw); height: auto; }
