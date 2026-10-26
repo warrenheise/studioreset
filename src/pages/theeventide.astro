@@ -20,7 +20,7 @@ const base = import.meta.env.BASE_URL;
 const posterImg = await getImage({ src: poster, width: 1280, format: "webp", quality: 70 });
 const art = { widths: [540, 1080], sizes: "(min-width: 768px) 50vw, 100vw", format: "webp" as const, class: "contain" };
 const profile = { widths: [320, 640], sizes: "(min-width: 768px) 30vw, 60vw", format: "webp" as const, class: "cover" };
-const flourishProps = { alt: "", widths: [465], format: "webp" as const, class: "contain" };
+const flourishProps = { alt: "", widths: [465], format: "webp" as const };
 const description =
   "The Eventide is a neon-noir supernatural mystery game from Studio Reset. Lead a paranormal investigation agency, assign agents to strange cases and piece together the truth. Wishlist it on Steam.";
 ---
@@ -59,37 +59,40 @@ const description =
   </Section>
 
   <Section theme="black" rowsM={20} rowsD={17} overlay={0.15}>
-    <Block m="2/2/4/10" d="5/2/7/12" z={5}><h2 class="accent center">Select &amp; Assign</h2></Block>
-    <Block m="4/2/8/10" d="7/3/12/11" z={2}>
-      <p class="small center">Every case in The Eventide begins with a question: who should investigate? The choice matters. A backlog of unexplained incidents waits for your attention. Each day, you select one case and assign two agents to investigate it. Every agent sees the world differently - and that difference determines what the case reveals.</p>
+    <Block m="2/2/4/10" d="5/2/7/12" z={5}><h2 class="accent">Select &amp; Assign</h2></Block>
+    <Block m="4/2/8/10" d="7/2/12/11" z={2}>
+      <p class="small">Every case in The Eventide begins with a question: who should investigate? The choice matters. A backlog of unexplained incidents waits for your attention. Each day, you select one case and assign two agents to investigate it. Every agent sees the world differently - and that difference determines what the case reveals.</p>
     </Block>
-    <Block m="8/2/10/10" d="12/4/14/10" z={4} jm="center" jd="center"><Image src={flourish} {...flourishProps} /></Block>
     <Block m="10/1/20/11" d="2/13/18/26" jm="center" jd="center">
       <Image src={image1} alt="A case file stamped Under Investigation, with a photo of two agents clipped to the front" {...art} />
     </Block>
   </Section>
 
+  <div class="section-break"><Image src={flourish} {...flourishProps} /></div>
+
   <Section rowsM={19} rowsD={14} overlay={0.15}>
-    <Block m="2/2/4/10" d="3/16/5/26" z={6}><h2 class="accent center">Explore &amp; Investigate</h2></Block>
+    <Block m="2/2/4/10" d="3/16/5/26" z={6}><h2 class="accent">Explore &amp; Investigate</h2></Block>
     <Block m="4/2/9/10" d="5/16/10/26" z={3}>
-      <p class="small center">The city doesn't reveal its secrets easily. From rain-slicked city alleys to dusty libraries and abandoned radio stations, your chosen agents investigate each scene through unique abilities. The agents move through investigations differently - drawn to different details, asking different questions. Every clue they uncover adds to a shared case notebook, building a picture that neither agent could have assembled alone.</p>
+      <p class="small">The city doesn't reveal its secrets easily. From rain-slicked city alleys to dusty libraries and abandoned radio stations, your chosen agents investigate each scene through unique abilities. The agents move through investigations differently - drawn to different details, asking different questions. Every clue they uncover adds to a shared case notebook, building a picture that neither agent could have assembled alone.</p>
     </Block>
     <Block m="10/1/20/11" d="1/2/15/15" z={1} jm="center" jd="center">
       <Image src={image2} alt="Three instant photos of investigation scenes: a lone figure in a beam of light, a dim room with glowing markers, and a silhouette in a doorway" {...art} />
     </Block>
-    <Block m="9/2/11/10" d="10/18/12/24" z={5} jm="center" jd="center"><Image src={flourish} {...flourishProps} /></Block>
   </Section>
 
+  <div class="section-break"><Image src={flourish} {...flourishProps} /></div>
+
   <Section theme="black" rowsM={21} rowsD={14} overlay={0.15}>
-    <Block m="2/2/4/10" d="3/2/5/12" z={6}><h2 class="accent center">Deduce &amp; Resolve</h2></Block>
-    <Block m="4/2/11/10" d="5/3/10/11" z={3}>
-      <p class="small center">The evidence is collected. What it means is still yours to determine. Your agents return with clues - fragments of something that happened, or something that still lingers. You piece it together, filling in the gaps of a case report that only you can complete. Each resolved case opens new leads, new locations, and new questions.</p>
+    <Block m="2/2/4/10" d="3/2/5/12" z={6}><h2 class="accent">Deduce &amp; Resolve</h2></Block>
+    <Block m="4/2/11/10" d="5/2/10/11" z={3}>
+      <p class="small">The evidence is collected. What it means is still yours to determine. Your agents return with clues - fragments of something that happened, or something that still lingers. You piece it together, filling in the gaps of a case report that only you can complete. Each resolved case opens new leads, new locations, and new questions.</p>
     </Block>
     <Block m="12/1/22/11" d="1/13/15/26" z={1} jm="center" jd="center">
       <Image src={image3} alt="A cork evidence board covered in photos and notes connected by red string" {...art} />
     </Block>
-    <Block m="11/2/13/10" d="10/4/12/10" z={5} jm="center" jd="center"><Image src={flourish} {...flourishProps} /></Block>
   </Section>
+
+  <div class="section-break"><Image src={flourish} {...flourishProps} /></div>
 
   <Section rowsM={40} rowsD={31} overlay={0.15} minHeight="1vh">
     <Block m="19/1/41/8" d="5/10/32/18" z={3} jm="center" jd="center">
@@ -106,14 +109,18 @@ const description =
     </Block>
   </Section>
 
-  <Section theme="black-bold" rowsM={16} rowsD={15} overlay={0.15}>
-    <Block m="2/2/4/10" d="9/18/11/24" z={6} jm="center" jd="center"><Image src={flourish} {...flourishProps} /></Block>
-    <Block m="4/2/6/10" d="2/16/4/26" z={2}><h2 class="accent center" style="font-size:var(--h3)">Development Journey</h2></Block>
-    <Block m="6/2/9/10" d="5/17/7/25" jd="center">
-      <p class="small center">The Eventide is Studio Reset’s first title - if you want to follow along you can check out our socials for updates. We are <em>very </em>good at updating them and not scared of social media at all.</p>
+  <div class="section-break"><Image src={flourish} {...flourishProps} /></div>
+
+  <Section theme="black-bold" rowsM={20} rowsD={15} overlay={0.15}>
+    <Block m="4/2/6/10" d="2/16/4/26" z={2}><h2 class="accent" style="font-size:var(--h3)">Development Journey</h2></Block>
+    <Block m="6/2/9/10" d="4/16/8/26">
+      <p class="small">The Eventide is Studio Reset’s first title - if you want to follow along you can check out our socials for updates. We are <em>very </em>good at updating them and not scared of social media at all.</p>
     </Block>
     <Block m="10/1/17/11" d="2/2/15/16" z={1}>
       <YouTube id="9_BV5YG1Ozk" title="The Eventide - Reveal Trailer" />
+    </Block>
+    <Block m="18/2/20/10" d="10/16/12/26" z={6} class="cta">
+      <a class="button" href={site.steamUrl} target="_blank" rel="noopener">Wishlist on Steam</a>
     </Block>
   </Section>
 </Base>
