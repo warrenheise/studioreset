@@ -1,0 +1,62 @@
+---
+import { Image } from "astro:assets";
+import Base from "../layouts/Base.astro";
+import Section from "../components/Section.astro";
+import Block from "../components/Block.astro";
+import { site } from "../data/site";
+import pattern from "../assets/images/pattern_red.png";
+import hq from "../assets/images/HQ.png";
+import kaelin from "../assets/images/halftone_Kaelin.jpg";
+import francis from "../assets/images/halftone_Francis.jpg";
+import kris from "../assets/images/halftone_Kris.jpg";
+
+const portrait = { widths: [400, 600], sizes: "(min-width: 768px) 23vw, 88vw", format: "webp" as const, class: "cover" };
+const people = [
+  { name: "Kaelin Lavallee", role: "Creative Director" },
+  { name: "Francis Lacuna", role: "Art Director" },
+  { name: "Kris Schoneberg", role: "Design Director" }
+];
+---
+<Base
+  title="Team | Studio Reset"
+  description="Meet the Studio Reset team, veteran game developers with experience on Dragon Age, Mass Effect, and Nightingale, now making story-rich games together in Edmonton."
+  jsonLd={[{
+    "@type": "AboutPage",
+    "@id": `${site.url}/team/#webpage`,
+    url: `${site.url}/team/`,
+    name: "Meet the Team",
+    about: { "@id": `${site.url}/#organization` }
+  }]}
+>
+  <Section theme="white" rowsM={63} rowsD={27} bg={pattern} bgFormat="png" overlay={0.9} eager>
+    <Block m="2/2/4/10" d="6/2/8/10" z={11}>
+      <h1 class="accent">Meet the Team</h1>
+    </Block>
+    <Block m="4/2/21/10" d="8/2/19/13" z={1} jd="center" class="dark-accent">
+      <p>The three of us have spent a long time making games together. Through all of it - the shipped titles, the hard lessons, the decisions that worked and the ones that very much didn't - we kept gravitating toward the same qualities in each other. The same instincts. The same stubbornness about what matters. The same belief that the people you make something with are just as important as the thing itself.</p>
+      <p>At some point, that stops feeling like coincidence and starts feeling like a reason.</p>
+      <p>So we took everything we'd built and learned together, and we <strong class="accent">Reset</strong>.</p>
+    </Block>
+
+    <Block m="21/2/32/10" d="2/14/10/20" z={4} jm="center" jd="center">
+      <Image src={kaelin} alt="Halftone portrait of Kaelin Lavallee" {...portrait} />
+    </Block>
+    <Block m="32/2/34/10" d="4/20/6/26" z={5}><h2 class="accent" style="font-size:var(--h4)">{people[0].name}</h2></Block>
+    <Block m="33/2/35/10" d="5/20/7/26" z={6} class="dark-accent"><p>{people[0].role}</p></Block>
+
+    <Block m="35/2/46/10" d="10/20/18/26" z={3} jm="center" jd="center">
+      <Image src={francis} alt="Halftone portrait of Francis Lacuna" {...portrait} />
+    </Block>
+    <Block m="46/2/48/10" d="12/14/14/20" z={8} class="team-right"><h2 class="accent" style="font-size:var(--h4)">{people[1].name}</h2></Block>
+    <Block m="47/2/49/10" d="13/14/15/20" z={7} class="dark-accent team-right"><p>{people[1].role}</p></Block>
+
+    <Block m="49/2/60/10" d="18/14/26/20" z={2} jm="center" jd="center">
+      <Image src={kris} alt="Halftone portrait of Kris Schoneberg" {...portrait} />
+    </Block>
+    <Block m="60/2/62/10" d="20/20/23/26" z={9}><h2 class="accent" style="font-size:var(--h4)">{people[2].name}</h2></Block>
+    <Block m="61/2/63/10" d="21/20/23/26" z={10} class="dark-accent"><p>{people[2].role}</p></Block>
+  </Section>
+
+  <Section rowsM={2} rowsD={9} bg={hq} overlay={0.15} minHeight="66vh">
+  </Section>
+</Base>

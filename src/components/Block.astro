@@ -1,0 +1,17 @@
+---
+// One Squarespace layout block. `m` and `d` are grid-area values copied from
+// the original site's mobile and desktop layouts.
+type Props = {
+  m: string;
+  d: string;
+  z?: number;
+  jm?: "flex-start" | "center" | "flex-end";
+  jd?: "flex-start" | "center" | "flex-end";
+  class?: string;
+  fade?: boolean;
+};
+const { m, d, z = 0, jm = "flex-start", jd = "flex-start", class: className, fade = true } = Astro.props;
+---
+<div class:list={["block", className, { fade }]} style={`--m:${m};--d:${d};--z:${z};--jm:${jm};--jd:${jd}`}>
+  <slot />
+</div>

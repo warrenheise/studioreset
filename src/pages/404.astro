@@ -1,0 +1,13 @@
+---
+import Base from "../layouts/Base.astro";
+import Section from "../components/Section.astro";
+import Block from "../components/Block.astro";
+---
+<Base title="Page not found | Studio Reset" description="This page doesn't exist.">
+  <Section theme="dark-bold" rowsM={10} rowsD={12}>
+    <Block m="3/2/9/10" d="4/2/10/16" jd="center">
+      <h1 class="accent">Page not found</h1>
+      <p>This case went cold. <a href={import.meta.env.BASE_URL}>Head back to the home page</a>.</p>
+    </Block>
+  </Section>
+</Base>

@@ -1,0 +1,25 @@
+---
+// Where signups go is not decided yet. Set PUBLIC_NEWSLETTER_ACTION to the
+// provider's form endpoint and the form posts there; until then it explains.
+const action = import.meta.env.PUBLIC_NEWSLETTER_ACTION ?? "";
+---
+<div class="newsletter">
+  <h2>Subscribe</h2>
+  <p>Sign up to receive news and updates.</p>
+  <form method="post" action={action || undefined} data-newsletter data-ready={action ? "true" : "false"}>
+    <label class="visually-hidden" for="newsletter-email">Email address</label>
+    <input id="newsletter-email" name="email" type="email" autocomplete="email" placeholder="Email Address" required />
+    <button class="button" type="submit">Sign Up</button>
+  </form>
+  <p class="status" role="status" aria-live="polite"></p>
+  <p class="note">We respect your privacy.</p>
+</div>
+<script>
+  const form = document.querySelector<HTMLFormElement>("[data-newsletter]");
+  form?.addEventListener("submit", (e) => {
+    if (form.dataset.ready === "true") return;
+    e.preventDefault();
+    const status = form.parentElement!.querySelector(".status")!;
+    status.textContent = "Signups open soon. Join our Discord for updates in the meantime.";
+  });
+</script>

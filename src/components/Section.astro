@@ -1,0 +1,50 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
+type Props = {
+  theme?: "white" | "dark" | "dark-bold" | "black" | "black-bold";
+  rowsM: number;
+  rowsD: number;
+  bg?: ImageMetadata;
+  bgPosition?: string;
+  overlay?: number;
+  minHeight?: string;
+  id?: string;
+  label?: string;
+  eager?: boolean;
+  // Lossy WebP smears fine repeating patterns; those stay PNG.
+  bgFormat?: "webp" | "png";
+};
+
+const { theme = "black", rowsM, rowsD, bg, bgPosition = "50% 50%", overlay = 0, minHeight, id, label, eager = false, bgFormat = "webp" } = Astro.props;
+const hasVideo = Astro.slots.has("background");
+---
+<section
+  class="section"
+  data-theme={theme}
+  id={id}
+  aria-label={label}
+  style={`--overlay:${overlay};${minHeight ? `min-height:${minHeight};` : ""}`}
+>
+  {(bg || hasVideo) && (
+    <div class="section-bg" aria-hidden="true">
+      {hasVideo ? <slot name="background" /> : bg && (
+        <Image
+          src={bg}
+          alt=""
+          widths={[640, 1024, 1600, 2400].filter((w) => w <= bg.width)}
+          sizes="100vw"
+          format={bgFormat}
+          quality={70}
+          loading={eager ? "eager" : "lazy"}
+          fetchpriority={eager ? "high" : undefined}
+          style={`object-position:${bgPosition}`}
+        />
+      )}
+    </div>
+  )}
+  <div class="grid" style={`--rows-m:${rowsM};--rows-d:${rowsD}`}>
+    <slot />
+  </div>
+</section>
