@@ -149,13 +149,18 @@ const graph = {
       const layers = [...document.querySelectorAll<HTMLElement>(".section-bg[data-parallax]")];
       const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)");
       let ticking = false;
+      // Phone browsers resize the viewport as the address bar slides in and
+      // out. Re-measuring then would resize the backgrounds mid-scroll, so on
+      // phones the height is only re-read when the width changes (rotation).
+      let vh = innerHeight;
+      let lastWidth = innerWidth;
       const update = () => {
         ticking = false;
-        const vh = innerHeight;
+        const phone = innerWidth < 768;
         for (const el of layers) {
-          // Off on phones, as on Squarespace: the extra height would zoom the
-          // background too far into a narrow screen.
-          const factor = reduceMotion.matches || innerWidth < 768 ? 0 : Number(el.dataset.parallax);
+          // Phones get a third of the effect: the extra height would otherwise
+          // zoom the background too far into a narrow screen.
+          const factor = reduceMotion.matches ? 0 : Number(el.dataset.parallax) * (phone ? 0.35 : 1);
           const rect = el.parentElement!.getBoundingClientRect();
           const reach = (factor * (vh + rect.height)) / 2;
           el.style.inset = `${-reach}px 0`;
@@ -168,7 +173,11 @@ const graph = {
       const request = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
       if (layers.length) {
         addEventListener("scroll", request, { passive: true });
-        addEventListener("resize", request);
+        addEventListener("resize", () => {
+          if (innerWidth >= 768 || innerWidth !== lastWidth) vh = innerHeight;
+          lastWidth = innerWidth;
+          request();
+        });
         reduceMotion.addEventListener("change", request);
         update();
       }
