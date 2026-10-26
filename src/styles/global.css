@@ -222,7 +222,7 @@ body.menu-open { overflow: hidden; }
 .newsletter > :not(.r-mark) { position: relative; }
 .newsletter h2 { font-size: clamp(26px, 2.3vw, 38px); line-height: 1.15; font-weight: 500; }
 .newsletter h2, .newsletter .lede { padding-right: clamp(64px, 5vw, 100px); }
-.newsletter .lede { margin: .3em 0 1.1em; }
+.newsletter .lede { margin: .3em 0 1.1em; line-height: 1.45; }
 .newsletter form { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; }
 .newsletter input {
   flex: 1 1 10em; min-width: 0; font: inherit; font-size: 16px; color: var(--ink);
@@ -274,4 +274,17 @@ body.menu-open { overflow: hidden; }
    whole room shows, and the crop leans toward the hand by the cabinet. */
 @media (min-width: 768px) {
   #hq { min-height: 0 !important; aspect-ratio: 2500 / 848; }
+}
+
+.hero-intro p { margin-top: .9em; }
+
+/* Wishlist: Steam mark beside the label, a touch of lift on hover. */
+.button-steam { display: inline-flex; align-items: center; gap: .6em; transition: transform .15s ease, box-shadow .15s ease; }
+.button-steam svg { width: 1.3em; height: 1.3em; fill: currentColor; flex: none; }
+.button-steam:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgb(0 0 0 / .25); }
+@media (prefers-reduced-motion: reduce) { .button-steam:hover { transform: none; } }
+
+/* Buttons scale down on phones so they don't outweigh the content. */
+@media (max-width: 767px) {
+  .button { padding: 1em 1.5em; font-size: 16px; }
 }

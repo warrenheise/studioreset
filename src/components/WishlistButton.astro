@@ -1,0 +1,9 @@
+---
+// The Steam call to action, with the Steam mark so it reads as a store link.
+import { siSteam } from "simple-icons";
+import { site } from "../data/site";
+---
+<a class="button button-steam" href={site.steamUrl} target="_blank" rel="noopener">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d={siSteam.path} /></svg>
+  Wishlist on Steam
+</a>
