@@ -42,7 +42,7 @@ const description =
 >
   <link slot="head" rel="preload" as="image" href={posterImg.src} fetchpriority="high" />
 
-  <Section theme="black" rowsM={7} rowsD={20}>
+  <Section theme="black" rowsM={7} rowsD={20} parallax={30}>
     <video slot="background" autoplay muted loop playsinline preload="metadata" poster={posterImg.src}>
       <source src={`${base}video/eventide-small.mp4`} type="video/mp4" media="(max-width: 767px)" />
       <source src={`${base}video/eventide.mp4`} type="video/mp4" />
