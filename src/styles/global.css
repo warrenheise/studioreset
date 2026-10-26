@@ -283,7 +283,7 @@ body.menu-open { overflow: hidden; }
 .hero-intro p { margin-top: .9em; }
 
 /* Wishlist: Steam mark beside the label, a touch of lift on hover. */
-.button-steam { display: inline-flex; align-items: center; gap: .6em; transition: transform .15s ease, box-shadow .15s ease; }
+.button-steam { display: inline-flex; align-items: center; gap: .6em; background: var(--mint); color: var(--ink); transition: transform .15s ease, box-shadow .15s ease; }
 .button-steam svg { width: 1.3em; height: 1.3em; fill: currentColor; flex: none; }
 .button-steam:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgb(0 0 0 / .25); }
 @media (prefers-reduced-motion: reduce) { .button-steam:hover { transform: none; } }
