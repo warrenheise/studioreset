@@ -249,7 +249,8 @@ body.menu-open { overflow: hidden; }
 .yt:hover .yt-play path:first-child { fill: #c00; }
 
 .wishlist { align-items: center; }
-.cta { align-items: flex-start; }
+.cta { align-items: center; }
+@media (min-width: 768px) { .cta { align-items: flex-start; } }
 
 /* Background parallax: the background is made taller than its section and
    a small script in Base.astro moves it as the page scrolls. */
