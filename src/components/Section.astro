@@ -15,14 +15,12 @@ type Props = {
   eager?: boolean;
   // Lossy WebP smears fine repeating patterns; those stay PNG.
   bgFormat?: "webp" | "png";
-  // Squarespace's background parallax "intensity" (0 = off). The background
-  // is made this much taller than the section and drifts as the page scrolls.
+  // Squarespace's background parallax "intensity" (0 = off): the background
+  // scrolls this many percent slower than the page.
   parallax?: number;
 };
 
 const { theme = "black", rowsM, rowsD, bg, bgPosition = "50% 50%", overlay = 0, minHeight, id, label, eager = false, bgFormat = "webp", parallax = 0 } = Astro.props;
-// Travel as a share of the background's own (taller) height.
-const shift = parallax ? ((parallax / 2) / (100 + parallax)) * 100 : 0;
 const hasVideo = Astro.slots.has("background");
 ---
 <section
@@ -36,7 +34,7 @@ const hasVideo = Astro.slots.has("background");
     <div
       class:list={["section-bg", { parallax: parallax > 0 }]}
       aria-hidden="true"
-      style={parallax ? `--px-grow:${parallax / 2}%;--px-shift:${shift.toFixed(2)}%` : undefined}
+      data-parallax={parallax ? parallax / 100 : undefined}
     >
       {hasVideo ? <slot name="background" /> : bg && (
         <Image
