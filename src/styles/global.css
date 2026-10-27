@@ -296,5 +296,6 @@ body.menu-open { overflow: hidden; }
 
 /* Buttons scale down on phones so they don't outweigh the content. */
 @media (max-width: 767px) {
+  .newsletter { margin-top: 34px; }
   .button { padding: 1em 1.5em; font-size: 16px; }
 }
