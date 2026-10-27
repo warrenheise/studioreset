@@ -21,7 +21,7 @@ const base = import.meta.env.BASE_URL;
 const posterImg = await getImage({ src: poster, width: 1280, format: "webp", quality: 70 });
 const art = { widths: [540, 1080], sizes: "(min-width: 768px) 50vw, 100vw", format: "webp" as const, class: "contain" };
 const profile = { widths: [320, 640], sizes: "(min-width: 768px) 30vw, 60vw", format: "webp" as const, class: "cover" };
-const flourishProps = { alt: "", widths: [465], format: "webp" as const };
+const flourishProps = { alt: "", widths: [465], format: "webp" as const, class: "fade" };
 const description =
   "The Eventide is a neon-noir supernatural mystery game from Studio Reset. Lead a paranormal investigation agency, assign agents to strange cases and piece together the truth. Wishlist it on Steam.";
 ---
